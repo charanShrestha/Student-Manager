@@ -1,0 +1,19 @@
+{
+  "name": "salt_admin",
+  "version": "1.0.0",
+  "description": "A salt administrator solution.",
+  "main": "index.js",
+  "repository": "https://github.com/saltsthlm/salt-last-project",
+  "author": "mob.map",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  },
+  "scripts": {
+    "server": "cd server/ && yarn start",
+    "client": "cd client/ && yarn start",
+    "addmodules": "cd server/ && yarn && cd ../client/ && yarn",
+    "start": "concurrently \"yarn server\" \"yarn client\"",
+    "deploy": "cd client && yarn build && cd ../server && rm -r client/build && mv ../client/build client && git add . && git commit -m \"Deploy\" && git push heroku master"
+  }
+}
